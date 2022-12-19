@@ -2,7 +2,7 @@
 
 Back Office API
 - API version: 1.0.0
-  - Build date: 2022-12-19T14:21:56.879349Z[Etc/UTC]
+  - Build date: 2022-12-19T18:32:39.242307Z[Etc/UTC]
 
 # Back Office
 For this system, a document is anything that has an id, a snippet, and an arbitrary set of properties.
@@ -50,7 +50,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.xayn</groupId>
   <artifactId>xayn_back_office_sdk</artifactId>
-  <version>v1.0.11</version>
+  <version>1.0.12</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -66,7 +66,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.xayn:xayn_back_office_sdk:v1.0.11"
+     implementation "com.xayn:xayn_back_office_sdk:1.0.12"
   }
 ```
 
@@ -80,7 +80,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/xayn_back_office_sdk-v1.0.11.jar`
+* `target/xayn_back_office_sdk-1.0.12.jar`
 * `target/lib/*.jar`
 
 ## Getting Started
