@@ -13,7 +13,7 @@ info:
     # Auth
     To authenticate with the API, a token will be provided.
   title: Back Office API
-  version: 1.0.0
+  version: 1.0.0-rc6
 servers:
 - url: /
 security:
@@ -34,11 +34,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DeleteDocumentsRequest'
+        required: true
       responses:
         "204":
           description: successful operation
         "400":
-          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Delete all listed documents.
       tags:
       - back office
@@ -48,17 +54,28 @@ paths:
       description: |-
         Add documents to the system. The system will create a representation of the document
         that will be used to match it against the preferences of a user.
-      operationId: ingestDocuments
+      operationId: createDocuments
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/IngestionRequest'
+        required: true
       responses:
-        "204":
-          description: successful operation
+        "201":
+          content:
+            application/json:
+              schema:
+                example: {}
+                type: object
+          description: Successful operation
         "400":
-          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
         "500":
           content:
             application/json:
@@ -87,7 +104,12 @@ paths:
         "204":
           description: successful operation
         "400":
-          description: invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Delete the document from the system.
       tags:
       - back office
@@ -107,16 +129,19 @@ paths:
         "204":
           description: successful operation
         "400":
-          description: invalid document id
-        "404":
-          description: document id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Delete all document properties
       tags:
       - back office
       x-accepts: application/json
     get:
       description: Gets all the properties of the document.
-      operationId: getDocumentProperties
+      operationId: listDocumentProperties
       parameters:
       - description: Id of the document
         in: path
@@ -132,16 +157,19 @@ paths:
                 $ref: '#/components/schemas/DocumentPropertiesResponse'
           description: successful operation
         "400":
-          description: invalid document id
-        "404":
-          description: document id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Get all document properties
       tags:
       - back office
       x-accepts: application/json
     put:
       description: Sets or replaces all the properties of the document.
-      operationId: setDocumentProperties
+      operationId: replaceDocumentProperties
       parameters:
       - description: Id of the document
         in: path
@@ -154,13 +182,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DocumentPropertiesRequest'
+        required: true
       responses:
         "204":
           description: successful operation
         "400":
-          description: invalid document id
-        "404":
-          description: document id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Set all document properties
       tags:
       - back office
@@ -189,9 +221,12 @@ paths:
         "204":
           description: successful operation
         "400":
-          description: invalid document id or property id
-        "404":
-          description: document id or property id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Delete a document property
       tags:
       - back office
@@ -222,16 +257,19 @@ paths:
                 $ref: '#/components/schemas/DocumentPropertyResponse'
           description: successful operation
         "400":
-          description: invalid document id or property id
-        "404":
-          description: document id or property id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Get a document property
       tags:
       - back office
       x-accepts: application/json
     put:
       description: Sets or replaces the property of the document.
-      operationId: setDocumentProperty
+      operationId: replaceDocumentProperty
       parameters:
       - description: Id of the document
         in: path
@@ -252,13 +290,17 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/DocumentPropertyRequest'
+        required: true
       responses:
         "204":
           description: successful operation
         "400":
-          description: invalid document id or property id
-        "404":
-          description: document id not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericError'
+          description: "The request is invalid. Please check the path parameters,\
+            \ queries, and the request body."
       summary: Set a document property
       tags:
       - back office
@@ -273,6 +315,21 @@ components:
       required: true
       schema:
         $ref: '#/components/schemas/DocumentId'
+  responses:
+    Created:
+      content:
+        application/json:
+          schema:
+            example: {}
+            type: object
+      description: Successful operation
+    BadRequest:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GenericError'
+      description: "The request is invalid. Please check the path parameters, queries,\
+        \ and the request body."
   schemas:
     DocumentPropertyRequest:
       example:
@@ -286,7 +343,7 @@ components:
       type: object
     DocumentPropertyResponse:
       example:
-        property: News title
+        property: Any valid json value
       properties:
         property:
           description: Arbitrary property that can be attached to a document.
@@ -318,8 +375,6 @@ components:
       example:
         properties:
           title: News title
-          image_url: http://example.com/news_image.jpg
-          link: http://example.com/this_news
       properties:
         properties:
           additionalProperties:
@@ -337,21 +392,26 @@ components:
     IngestedDocument:
       example:
         snippet: snippet
-        id: document_id
+        id: valid_id1
         properties:
           title: News title
           image_url: http://example.com/news_image.jpg
           link: http://example.com/this_news
       properties:
         id:
-          description: |-
-            A document id can be any non-empty UTF-8 string that does not contain the null byte.
-            It may consist of digits, Latin letters, underscores, colons, minus signs, at signs, and dots.
-          example: document_id
+          description: "An id can be any non-empty string that consist of digits,\
+            \ latin letters, underscores, colons, minus signs, at signs, and dots."
+          example: valid_id1
+          maxLength: 256
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_:@.-]+$"
           type: string
         snippet:
           description: Text that will be used to match the document against the user
             interests.
+          maxLength: 1024
+          minLength: 1
+          pattern: .+
           type: string
         properties:
           additionalProperties:
@@ -371,13 +431,31 @@ components:
       example:
         documents:
         - snippet: snippet
-          id: document_id
+          id: valid_id1
           properties:
             title: News title
             image_url: http://example.com/news_image.jpg
             link: http://example.com/this_news
         - snippet: snippet
-          id: document_id
+          id: valid_id1
+          properties:
+            title: News title
+            image_url: http://example.com/news_image.jpg
+            link: http://example.com/this_news
+        - snippet: snippet
+          id: valid_id1
+          properties:
+            title: News title
+            image_url: http://example.com/news_image.jpg
+            link: http://example.com/this_news
+        - snippet: snippet
+          id: valid_id1
+          properties:
+            title: News title
+            image_url: http://example.com/news_image.jpg
+            link: http://example.com/this_news
+        - snippet: snippet
+          id: valid_id1
           properties:
             title: News title
             image_url: http://example.com/news_image.jpg
@@ -386,39 +464,59 @@ components:
         documents:
           items:
             $ref: '#/components/schemas/IngestedDocument'
+          maxItems: 100
+          minItems: 1
           type: array
       required:
       - documents
       type: object
     IngestionError:
       allOf:
-      - $ref: '#/components/schemas/BaseError'
+      - $ref: '#/components/schemas/GenericError'
       - $ref: '#/components/schemas/IngestionError_allOf'
     DeleteDocumentsRequest:
       example:
         documents:
-        - document_id
-        - document_id
+        - null
+        - null
+        - null
+        - null
+        - null
       properties:
         documents:
           items:
             $ref: '#/components/schemas/DocumentId'
+          maxItems: 1000
+          minItems: 1
           type: array
       required:
       - documents
       type: object
+    GenericError:
+      properties:
+        request_id:
+          description: Request ID optionally generated from the service. It can be
+            communicated to xayn to help debugging.
+          type: string
+        kind:
+          description: What kind of error this is.
+          type: string
+        details:
+          description: Additional error details. Might differ depending on debug options.
+          type: object
+      type: object
     DocumentId:
-      description: |-
-        A document id can be any non-empty UTF-8 string that does not contain the null byte.
-        It may consist of digits, Latin letters, underscores, colons, minus signs, at signs, and dots.
-      example: document_id
+      $ref: '#/components/schemas/Id'
+    Id:
+      description: "An id can be any non-empty string that consist of digits, latin\
+        \ letters, underscores, colons, minus signs, at signs, and dots."
+      example: valid_id1
+      maxLength: 256
+      minLength: 1
+      pattern: "^[a-zA-Z0-9_:@.-]+$"
       type: string
     DocumentPropertyId:
-      description: |-
-        A document property id can be any non-empty UTF-8 string that does not contain the null byte.
-        It may consist of digits, Latin letters, underscores, colons, minus signs, at signs, and dots.
-      example: document_property_id
-      type: string
+      $ref: '#/components/schemas/Id'
     DocumentProperty:
       description: Arbitrary property that can be attached to a document.
       example: News title
@@ -432,29 +530,15 @@ components:
         image_url: http://example.com/news_image.jpg
         link: http://example.com/this_news
       type: object
-    BaseError:
-      properties:
-        request_id:
-          description: Request ID optionally generated from the service. It can be
-            communicated to xayn to help debugging.
-          type: string
-        kind:
-          description: What kind of error this is.
-          type: string
-        details:
-          description: Additional error details. Might differ depending on debug options.
-          type: object
-      required:
-      - kind
-      - request_id
-      type: object
     IngestionError_allOf_details_documents:
       properties:
         id:
-          description: |-
-            A document id can be any non-empty UTF-8 string that does not contain the null byte.
-            It may consist of digits, Latin letters, underscores, colons, minus signs, at signs, and dots.
-          example: document_id
+          description: "An id can be any non-empty string that consist of digits,\
+            \ latin letters, underscores, colons, minus signs, at signs, and dots."
+          example: valid_id1
+          maxLength: 256
+          minLength: 1
+          pattern: "^[a-zA-Z0-9_:@.-]+$"
           type: string
       required:
       - id
@@ -465,6 +549,8 @@ components:
         documents:
           items:
             $ref: '#/components/schemas/IngestionError_allOf_details_documents'
+          maxItems: 100
+          minItems: 0
           type: array
       required:
       - documents
