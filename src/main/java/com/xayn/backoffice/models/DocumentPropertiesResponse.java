@@ -51,7 +51,7 @@ import com.xayn.backoffice.JSON;
 /**
  * DocumentPropertiesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T11:43:20.797741Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T15:18:11.624205Z[Etc/UTC]")
 public class DocumentPropertiesResponse implements Serializable {
   private static final long serialVersionUID = 1L;
 
