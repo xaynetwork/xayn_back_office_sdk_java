@@ -51,7 +51,7 @@ import com.xayn.backoffice.JSON;
 /**
  * DeleteDocumentsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T21:23:37.653949Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T21:28:27.851564Z[Etc/UTC]")
 public class DeleteDocumentsRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
