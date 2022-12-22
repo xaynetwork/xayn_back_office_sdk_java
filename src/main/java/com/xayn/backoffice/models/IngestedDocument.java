@@ -51,7 +51,7 @@ import com.xayn.backoffice.JSON;
 /**
  * IngestedDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T10:36:58.748902Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T11:43:20.797741Z[Etc/UTC]")
 public class IngestedDocument implements Serializable {
   private static final long serialVersionUID = 1L;
 
