@@ -50,7 +50,7 @@ import com.xayn.backoffice.JSON;
 /**
  * IngestionError
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T15:59:21.878312Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-22T21:23:37.653949Z[Etc/UTC]")
 public class IngestionError implements Serializable {
   private static final long serialVersionUID = 1L;
 
