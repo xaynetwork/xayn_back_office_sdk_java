@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.io.Serializable;
 
 import com.google.gson.Gson;
@@ -47,39 +48,40 @@ import java.util.Set;
 import com.xayn.backoffice.JSON;
 
 /**
- * IngestionErrorAllOfDetailsDocuments
+ * Mostly arbitrary properties that can be attached to a document. A key must be a valid &#x60;DocumentPropertyId&#x60;.
  */
+@ApiModel(description = "Mostly arbitrary properties that can be attached to a document. A key must be a valid `DocumentPropertyId`.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-30T14:21:10.455011Z[Etc/UTC]")
-public class IngestionErrorAllOfDetailsDocuments implements Serializable {
+public class DocumentProperties implements Serializable {
   private static final long serialVersionUID = 1L;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String SERIALIZED_NAME_PUBLICATION_DATE = "publication_date";
+  @SerializedName(SERIALIZED_NAME_PUBLICATION_DATE)
+  private OffsetDateTime publicationDate;
 
-  public IngestionErrorAllOfDetailsDocuments() {
+  public DocumentProperties() {
   }
 
-  public IngestionErrorAllOfDetailsDocuments id(String id) {
+  public DocumentProperties publicationDate(OffsetDateTime publicationDate) {
     
-    this.id = id;
+    this.publicationDate = publicationDate;
     return this;
   }
 
    /**
-   * An id can be any non-empty string that consist of digits, latin letters, underscores, colons, minus signs, at signs, and dots.
-   * @return id
+   * A RFC3339 compatible date-time  - can be in the future - will be converted to and then stored as UTC - sub-second resolution is not guaranteed. - while &#x60;properties.publication_date&#x60; is in the future the document will not be   returned for personalized documents, once it is no longer in the future it will   automatically be considered for personalization from then on 
+   * @return publicationDate
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "valid_id1", required = true, value = "An id can be any non-empty string that consist of digits, latin letters, underscores, colons, minus signs, at signs, and dots.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2000-05-14T20:22:50Z", value = "A RFC3339 compatible date-time  - can be in the future - will be converted to and then stored as UTC - sub-second resolution is not guaranteed. - while `properties.publication_date` is in the future the document will not be   returned for personalized documents, once it is no longer in the future it will   automatically be considered for personalization from then on ")
 
-  public String getId() {
-    return id;
+  public OffsetDateTime getPublicationDate() {
+    return publicationDate;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setPublicationDate(OffsetDateTime publicationDate) {
+    this.publicationDate = publicationDate;
   }
 
   /**
@@ -95,9 +97,9 @@ public class IngestionErrorAllOfDetailsDocuments implements Serializable {
    *
    * @param key name of the property
    * @param value value of the property
-   * @return the IngestionErrorAllOfDetailsDocuments instance itself
+   * @return the DocumentProperties instance itself
    */
-  public IngestionErrorAllOfDetailsDocuments putAdditionalProperty(String key, Object value) {
+  public DocumentProperties putAdditionalProperty(String key, Object value) {
     if (this.additionalProperties == null) {
         this.additionalProperties = new HashMap<String, Object>();
     }
@@ -136,21 +138,21 @@ public class IngestionErrorAllOfDetailsDocuments implements Serializable {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    IngestionErrorAllOfDetailsDocuments ingestionErrorAllOfDetailsDocuments = (IngestionErrorAllOfDetailsDocuments) o;
-    return Objects.equals(this.id, ingestionErrorAllOfDetailsDocuments.id)&&
-        Objects.equals(this.additionalProperties, ingestionErrorAllOfDetailsDocuments.additionalProperties);
+    DocumentProperties documentProperties = (DocumentProperties) o;
+    return Objects.equals(this.publicationDate, documentProperties.publicationDate)&&
+        Objects.equals(this.additionalProperties, documentProperties.additionalProperties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, additionalProperties);
+    return Objects.hash(publicationDate, additionalProperties);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class IngestionErrorAllOfDetailsDocuments {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("class DocumentProperties {\n");
+    sb.append("    publicationDate: ").append(toIndentedString(publicationDate)).append("\n");
     sb.append("    additionalProperties: ").append(toIndentedString(additionalProperties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -174,34 +176,23 @@ public class IngestionErrorAllOfDetailsDocuments implements Serializable {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("id");
+    openapiFields.add("publication_date");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
   }
 
  /**
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to IngestionErrorAllOfDetailsDocuments
+  * @throws IOException if the JSON Object is invalid with respect to DocumentProperties
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!IngestionErrorAllOfDetailsDocuments.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in IngestionErrorAllOfDetailsDocuments is not found in the empty JSON string", IngestionErrorAllOfDetailsDocuments.openapiRequiredFields.toString()));
+        if (!DocumentProperties.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in DocumentProperties is not found in the empty JSON string", DocumentProperties.openapiRequiredFields.toString()));
         }
-      }
-
-      // check to make sure all required properties/fields are present in the JSON string
-      for (String requiredField : IngestionErrorAllOfDetailsDocuments.openapiRequiredFields) {
-        if (jsonObj.get(requiredField) == null) {
-          throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
-        }
-      }
-      if (!jsonObj.get("id").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `id` to be a primitive type in the JSON string but got `%s`", jsonObj.get("id").toString()));
       }
   }
 
@@ -209,16 +200,16 @@ public class IngestionErrorAllOfDetailsDocuments implements Serializable {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!IngestionErrorAllOfDetailsDocuments.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'IngestionErrorAllOfDetailsDocuments' and its subtypes
+       if (!DocumentProperties.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'DocumentProperties' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<IngestionErrorAllOfDetailsDocuments> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(IngestionErrorAllOfDetailsDocuments.class));
+       final TypeAdapter<DocumentProperties> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(DocumentProperties.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<IngestionErrorAllOfDetailsDocuments>() {
+       return (TypeAdapter<T>) new TypeAdapter<DocumentProperties>() {
            @Override
-           public void write(JsonWriter out, IngestionErrorAllOfDetailsDocuments value) throws IOException {
+           public void write(JsonWriter out, DocumentProperties value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
              // serialize additonal properties
@@ -241,11 +232,11 @@ public class IngestionErrorAllOfDetailsDocuments implements Serializable {
            }
 
            @Override
-           public IngestionErrorAllOfDetailsDocuments read(JsonReader in) throws IOException {
+           public DocumentProperties read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              // store additional fields in the deserialized instance
-             IngestionErrorAllOfDetailsDocuments instance = thisAdapter.fromJsonTree(jsonObj);
+             DocumentProperties instance = thisAdapter.fromJsonTree(jsonObj);
              for (Map.Entry<String, JsonElement> entry : jsonObj.entrySet()) {
                if (!openapiFields.contains(entry.getKey())) {
                  if (entry.getValue().isJsonPrimitive()) { // primitive type
@@ -272,18 +263,18 @@ public class IngestionErrorAllOfDetailsDocuments implements Serializable {
   }
 
  /**
-  * Create an instance of IngestionErrorAllOfDetailsDocuments given an JSON string
+  * Create an instance of DocumentProperties given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of IngestionErrorAllOfDetailsDocuments
-  * @throws IOException if the JSON string is invalid with respect to IngestionErrorAllOfDetailsDocuments
+  * @return An instance of DocumentProperties
+  * @throws IOException if the JSON string is invalid with respect to DocumentProperties
   */
-  public static IngestionErrorAllOfDetailsDocuments fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, IngestionErrorAllOfDetailsDocuments.class);
+  public static DocumentProperties fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, DocumentProperties.class);
   }
 
  /**
-  * Convert an instance of IngestionErrorAllOfDetailsDocuments to an JSON string
+  * Convert an instance of DocumentProperties to an JSON string
   *
   * @return JSON string
   */

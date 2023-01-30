@@ -10,9 +10,11 @@
  * Do not edit the class manually.
  */
 
-package com.xayn.backoffice;
-
+import com.xayn.backoffice.ApiClient;
+import com.xayn.backoffice.ApiException;
+import com.xayn.backoffice.BackOfficeApi;
 import com.xayn.backoffice.models.DeleteDocumentsRequest;
+import com.xayn.backoffice.models.DocumentProperties;
 import com.xayn.backoffice.models.DocumentPropertiesRequest;
 import com.xayn.backoffice.models.DocumentPropertiesResponse;
 import com.xayn.backoffice.models.DocumentPropertyRequest;
@@ -56,9 +58,9 @@ public class BackOfficeApiTest {
     @BeforeEach
     public void createDocumentsTest() throws ApiException {
         List<IngestedDocument> documents = new ArrayList<IngestedDocument>();
-        Map<String, Object> properties = new HashMap<String, Object>();
+        DocumentProperties properties = new DocumentProperties();
+        properties.putAdditionalProperty("category", "test");
 
-        properties.put("category", "test");
         documents.add(new IngestedDocument().id("test_A").snippet("test A").properties(properties));
         documents.add(new IngestedDocument().id("test_B").snippet("test B").properties(properties));
         documents.add(new IngestedDocument().id("test_C").snippet("test C").properties(properties));
@@ -136,7 +138,7 @@ public class BackOfficeApiTest {
     @Test
     public void listDocumentPropertiesTest() throws ApiException {
         DocumentPropertiesResponse response = api.listDocumentProperties("test_A");
-        assertEquals(response.getProperties().get("category"), "test");
+        assertEquals(response.getProperties().getAdditionalProperty("category"), "test");
     }
 
     /**
@@ -162,7 +164,9 @@ public class BackOfficeApiTest {
     @Test
     public void replaceDocumentPropertiesTest() throws ApiException {
         DocumentPropertiesRequest documentPropertiesRequest = new DocumentPropertiesRequest();
-        documentPropertiesRequest.putPropertiesItem("category", "test changed A");
+        DocumentProperties properties = new DocumentProperties();
+        properties.putAdditionalProperty("category", "test changed A");
+        documentPropertiesRequest.properties(properties);
 
         api.replaceDocumentProperties("test_A", documentPropertiesRequest);
     }
