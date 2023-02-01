@@ -51,7 +51,7 @@ import com.xayn.backoffice.JSON;
  * Mostly arbitrary properties that can be attached to a document. A key must be a valid &#x60;DocumentPropertyId&#x60;.
  */
 @ApiModel(description = "Mostly arbitrary properties that can be attached to a document. A key must be a valid `DocumentPropertyId`.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-01-30T14:21:10.455011Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-01T11:27:04.722435Z[Etc/UTC]")
 public class DocumentProperties implements Serializable {
   private static final long serialVersionUID = 1L;
 
