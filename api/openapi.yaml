@@ -33,7 +33,7 @@ info:
     Please see further down in this README.md file, or refer to the test included in this SDK's codebase, on how to set this token correctly.
     \
   title: Back Office API
-  version: 1.0.0-rc8
+  version: 1.0.0-rc9
 servers:
 - url: /
 security:
