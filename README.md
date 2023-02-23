@@ -1,8 +1,8 @@
 # xayn_back_office_sdk
 
 Back Office API
-- API version: 1.0.0-rc9
-  - Build date: 2023-02-14T18:45:10.779088Z[Etc/UTC]
+- API version: 1.0.0-rc10
+  - Build date: 2023-02-23T10:30:16.720700Z[Etc/UTC]
 
 # Back Office
 The back office is typically used within server-side apps.
@@ -70,7 +70,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.xayn</groupId>
   <artifactId>xayn_back_office_sdk</artifactId>
-  <version>1.0.23</version>
+  <version>1.0.24</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -86,7 +86,7 @@ Add this dependency to your project's build file:
   }
 
   dependencies {
-     implementation "com.xayn:xayn_back_office_sdk:1.0.23"
+     implementation "com.xayn:xayn_back_office_sdk:1.0.24"
   }
 ```
 
@@ -100,7 +100,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-* `target/xayn_back_office_sdk-1.0.23.jar`
+* `target/xayn_back_office_sdk-1.0.24.jar`
 * `target/lib/*.jar`
 
 # Getting started
