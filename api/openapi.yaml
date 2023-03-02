@@ -44,10 +44,7 @@ tags:
 paths:
   /documents:
     delete:
-      description: |-
-        Delete all documents listed in the request body. The endpoint is
-        idempotent. I.e. if the list contains one or multiple non-existing
-        documents, no error is produced.
+      description: Delete all documents listed in the request body.
       operationId: deleteDocuments
       requestBody:
         content:
@@ -115,9 +112,7 @@ paths:
       x-accepts: application/json
   /documents/{document_id}:
     delete:
-      description: |-
-        Permanently deletes the document from the system. The endpoint is
-        idempotent. Deleting a non-existing document does not produce an error.
+      description: Permanently deletes the document from the system.
       operationId: deleteDocument
       parameters:
       - description: Id of the document

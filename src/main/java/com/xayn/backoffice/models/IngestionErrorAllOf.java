@@ -21,8 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.xayn.backoffice.models.IngestionErrorAllOfDetails;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -50,7 +48,7 @@ import com.xayn.backoffice.JSON;
 /**
  * IngestionErrorAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-23T10:30:16.720700Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-02T15:01:31.481621Z[Etc/UTC]")
 public class IngestionErrorAllOf implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -72,7 +70,6 @@ public class IngestionErrorAllOf implements Serializable {
    * @return details
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "")
 
   public IngestionErrorAllOfDetails getDetails() {
     return details;
@@ -221,7 +218,7 @@ public class IngestionErrorAllOf implements Serializable {
            public void write(JsonWriter out, IngestionErrorAllOf value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)

@@ -282,7 +282,7 @@ public class BackOfficeApi {
 
     /**
      * Delete the document from the system.
-     * Permanently deletes the document from the system. The endpoint is idempotent. Deleting a non-existing document does not produce an error.
+     * Permanently deletes the document from the system.
      * @param documentId Id of the document (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -298,7 +298,7 @@ public class BackOfficeApi {
 
     /**
      * Delete the document from the system.
-     * Permanently deletes the document from the system. The endpoint is idempotent. Deleting a non-existing document does not produce an error.
+     * Permanently deletes the document from the system.
      * @param documentId Id of the document (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -316,7 +316,7 @@ public class BackOfficeApi {
 
     /**
      * Delete the document from the system. (asynchronously)
-     * Permanently deletes the document from the system. The endpoint is idempotent. Deleting a non-existing document does not produce an error.
+     * Permanently deletes the document from the system.
      * @param documentId Id of the document (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -661,7 +661,7 @@ public class BackOfficeApi {
 
     /**
      * Delete all listed documents.
-     * Delete all documents listed in the request body. The endpoint is idempotent. I.e. if the list contains one or multiple non-existing documents, no error is produced.
+     * Delete all documents listed in the request body.
      * @param deleteDocumentsRequest  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -677,7 +677,7 @@ public class BackOfficeApi {
 
     /**
      * Delete all listed documents.
-     * Delete all documents listed in the request body. The endpoint is idempotent. I.e. if the list contains one or multiple non-existing documents, no error is produced.
+     * Delete all documents listed in the request body.
      * @param deleteDocumentsRequest  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -695,7 +695,7 @@ public class BackOfficeApi {
 
     /**
      * Delete all listed documents. (asynchronously)
-     * Delete all documents listed in the request body. The endpoint is idempotent. I.e. if the list contains one or multiple non-existing documents, no error is produced.
+     * Delete all documents listed in the request body.
      * @param deleteDocumentsRequest  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call

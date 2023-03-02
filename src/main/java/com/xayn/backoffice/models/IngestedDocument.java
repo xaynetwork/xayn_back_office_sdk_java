@@ -21,8 +21,6 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.xayn.backoffice.models.DocumentProperties;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +50,7 @@ import com.xayn.backoffice.JSON;
 /**
  * IngestedDocument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-23T10:30:16.720700Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-02T15:01:31.481621Z[Etc/UTC]")
 public class IngestedDocument implements Serializable {
   private static final long serialVersionUID = 1L;
 
@@ -70,7 +68,7 @@ public class IngestedDocument implements Serializable {
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
-  private List<String> tags = null;
+  private List<String> tags = new ArrayList<>();
 
   public IngestedDocument() {
   }
@@ -86,7 +84,6 @@ public class IngestedDocument implements Serializable {
    * @return id
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(example = "valid_id1", required = true, value = "An id can be any non-empty string that consist of digits, latin letters, underscores, colons, minus signs, at signs, and dots.")
 
   public String getId() {
     return id;
@@ -109,7 +106,6 @@ public class IngestedDocument implements Serializable {
    * @return snippet
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Text that will be used to match the document against the user interests.")
 
   public String getSnippet() {
     return snippet;
@@ -132,7 +128,6 @@ public class IngestedDocument implements Serializable {
    * @return properties
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public DocumentProperties getProperties() {
     return properties;
@@ -163,7 +158,6 @@ public class IngestedDocument implements Serializable {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
 
   public List<String> getTags() {
     return tags;
@@ -330,7 +324,7 @@ public class IngestedDocument implements Serializable {
            public void write(JsonWriter out, IngestedDocument value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              obj.remove("additionalProperties");
-             // serialize additonal properties
+             // serialize additional properties
              if (value.getAdditionalProperties() != null) {
                for (Map.Entry<String, Object> entry : value.getAdditionalProperties().entrySet()) {
                  if (entry.getValue() instanceof String)
