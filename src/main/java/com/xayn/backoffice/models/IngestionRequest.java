@@ -50,7 +50,7 @@ import com.xayn.backoffice.JSON;
 /**
  * IngestionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-02T15:01:31.481621Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-07T13:31:10.105795Z[Etc/UTC]")
 public class IngestionRequest implements Serializable {
   private static final long serialVersionUID = 1L;
 
